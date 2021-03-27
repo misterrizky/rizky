@@ -219,11 +219,13 @@
         <!-- Service Section ============================================= -->
         @if (request()->is('dark'))
         <div class="section bg-transparant">
+            <div class="container">
+                <div class="col-sm-6 dark mb-5">
         @else
         <div class="section">
-        @endif
             <div class="container">
                 <div class="col-sm-6 mb-5">
+        @endif
                     <small class="text-muted text-uppercase font-weight-light ls3 d-block">My Services</small>
                     <h2 class="font-weight-bold ls0 mb-3" style="font-size: 46px;">The ways I can help you.</h2>
                     {{-- <p class="text-muted" style="font-size: 16px;">
