@@ -218,18 +218,21 @@
         </div>
         <!-- Service Section ============================================= -->
         @if (request()->is('dark'))
-        <div class="section bg-transparant">
+        <div class="section bg-transparent">
+            <div class="container">
+                <div class="col-sm-6 dark mb-5">
+                    <small class="text-muted text-uppercase font-weight-light ls3 d-block">My Service</small>
+                    <h2 class="font-weight-bold ls0 mb-3" style="font-size: 46px;">The ways I can help you.</h2>
+                    {{-- <p class="text-muted" style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur blanditiis saepe dolore tempora nihil praesentium dolorum unde, earum, nostrum odit?</p> --}}
+                </div>
         @else
-        <div class="section">
-        @endif
+        <div class="section" style="padding: 140px 0;">
             <div class="container">
                 <div class="col-sm-6 mb-5">
-                    <small class="text-muted text-uppercase font-weight-light ls3 d-block">My Services</small>
+                    <small class="text-muted text-uppercase font-weight-light ls3 d-block">My Service</small>
                     <h2 class="font-weight-bold ls0 mb-3" style="font-size: 46px;">The ways I can help you.</h2>
-                    {{-- <p class="text-muted" style="font-size: 16px;">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur blanditiis saepe dolore tempora nihil praesentium dolorum unde, earum, nostrum odit?
-                    </p> --}}
                 </div>
+        @endif
 
                 <div class="row clearfix">
                     <!-- Card 1 ============================================= -->
