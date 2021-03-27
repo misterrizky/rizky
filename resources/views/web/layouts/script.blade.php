@@ -1,17 +1,17 @@
-<script src="js/jquery.js"></script>
-<script src="js/plugins.min.js"></script>
+<script src="{{asset('semicolon/js/jquery.js')}}"></script>
+<script src="{{asset('semicolon/js/plugins.min.js')}}"></script>
 
 <!-- Photograph Hover Plugin
 ============================================= -->
-<script src="demos/writer/js/hover3d.js" ></script>
+<script src="{{asset('semicolon/demos/writer/js/hover3d.js')}}" ></script>
 
 <!-- Menu Open Plugin
 ============================================= -->
-<script src="demos/photographer/js/menu-easing.js"></script>
+<script src="{{asset('semicolon/demos/photographer/js/menu-easing.js')}}"></script>
 
 <!-- Footer Scripts
 ============================================= -->
-<script src="js/functions.js"></script>
+<script src="{{asset('semicolon/js/functions.js')}}"></script>
 
 <script>
 

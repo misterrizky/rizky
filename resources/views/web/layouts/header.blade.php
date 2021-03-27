@@ -2,7 +2,9 @@
     <div id="header-wrap">
         <div class="container">
             <div class="header-row">
-                <a href="demo-photography.html"><img src="demos/photography/images/logo@2x.png" alt="Canvas Logo" height="100"></a>
+                <a href="javascript:void(0);">
+                    <img src="{{('images/icon.png')}}" alt="RR" height="100">
+                </a>
 
                 <div>
                     <div class="primary-menu-trigger hamburger">
@@ -11,10 +13,7 @@
                     </div>
                     <div class="global-menu">
                         <div class="global-menu__wrap">
-                            <a class="global-menu__item" href="#">Home</a>
-                            <a class="global-menu__item" href="#">Photography</a>
-                            <a class="global-menu__item" href="#">About</a>
-                            <a class="global-menu__item" href="#">Contact</a>
+                            <a class="global-menu__item" href="javascript:void(0);">Shop</a>
                         </div>
                     </div>
                     <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
