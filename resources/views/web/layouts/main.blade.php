@@ -3,7 +3,7 @@
 @include('web.layouts.head')
 <!-- Page Loader, stretched (body)============================================= -->
 @if (request()->is('dark'))
-<body class="stretched dark" data-loader-html="<div><img src='{{asset('semicolon/demos/photographer/images/icons/loader-white.svg')}}' alt='Loader'></div>">
+<body class="stretched dark" data-loader-html="<div><img src='{{asset('semicolon/demos/photographer/images/icons/loader.svg')}}' alt='Loader'></div>">
 @else
 <body class="stretched" data-loader-html="<div><img src='{{asset('semicolon/demos/photographer/images/icons/loader.svg')}}' alt='Loader'></div>">
 @endif

@@ -26,6 +26,6 @@
 	<link rel="stylesheet" href="{{asset('semicolon/css/colors.php?color=e41c34')}}" type="text/css" />
 
 	<!-- Document Title ============================================= -->
-	<title>Rizky Ramadhan</title>
+	<title>Home | Rizky Ramadhan</title>
 
 </head>
