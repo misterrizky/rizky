@@ -27,5 +27,5 @@
 
 	<!-- Document Title ============================================= -->
 	<title>Rizky Ramadhan</title>
-	<link rel="icon" href="{{ asset('images/icon.png') }}">
+
 </head>
