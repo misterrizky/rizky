@@ -13,6 +13,7 @@
                     </div>
                     <div class="global-menu">
                         <div class="global-menu__wrap">
+                            <a class="global-menu__item" href="javascript:void(0);">Forum</a>
                             <a class="global-menu__item" href="javascript:void(0);">Shop</a>
                         </div>
                     </div>
