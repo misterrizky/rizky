@@ -29,6 +29,9 @@
     });
     </script>
 <script src="{{ asset('js/alert.js') }}"></script>
+@auth
+<script src="{{ asset('js/crud.js') }}"></script>
+@endauth
 @guest
 <script src="{{ asset('js/auth.js') }}"></script>
 @endguest

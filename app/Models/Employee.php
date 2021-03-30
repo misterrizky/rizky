@@ -11,6 +11,8 @@ class Employee extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
+    protected $guard = 'employee';
+
     protected $table = 'users';
     // protected $guard = 'employee';
     

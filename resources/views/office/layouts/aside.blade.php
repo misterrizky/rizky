@@ -51,7 +51,7 @@
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 {{-- @if(Auth::user()->role == "Super Admin") --}}
-                <li class="menu-item menu-item-submenu {{ request()->segment(1) == 'client' || (request()->segment(1) == 'portfolio') || request()->segment(1) == 'product' || request()->segment(1) == 'employee' || request()->segment(1) == 'member' ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu {{ $data['main_page'] == 'client' || $data['main_page'] == 'portfolio' || $data['main_page'] == 'product' || $data['main_page'] == 'employee' || $data['main_page'] == 'member' ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
@@ -75,7 +75,7 @@
                                     <span class="menu-text">Master Data</span>
                                 </span>
                             </li>
-                            <li class="menu-item {{ request()->segment(1) == 'client' ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                            <li class="menu-item {{ $data['main_page'] == 'client' ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{route('client')}}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -83,7 +83,7 @@
                                     <span class="menu-text">Client</span>
                                 </a>
                             </li>
-                            <li class="menu-item {{ request()->segment(1) == 'portfolio' ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                            <li class="menu-item {{ $data['main_page'] == 'portfolio' ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{route('portfolio')}}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -94,7 +94,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="menu-item {{ request()->segment(1) == 'product' ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                            <li class="menu-item {{ $data['main_page'] == 'product' ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{route('product')}}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -105,7 +105,7 @@
                                     </span> --}}
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-submenu {{ request()->segment(1) == 'employee' || request()->segment(1) == 'member' ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ $data['main_page'] == 'employee' || $data['main_page'] == 'member' ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -116,7 +116,7 @@
                                 <div class="menu-submenu">
                                     <i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
-                                        <li class="menu-item {{ request()->segment(1) == 'employee' ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ $data['main_page'] == 'employee' ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                             <a href="{{route('employee')}}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -124,7 +124,7 @@
                                                 <span class="menu-text">Employee</span>
                                             </a>
                                         </li>
-                                        <li class="menu-item {{ request()->segment(1) == 'member' ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ $data['main_page'] == 'member' ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                             <a href="{{route('member')}}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -220,7 +220,7 @@
                                     <i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
                                         <li class="menu-item {{ request()->is('clear-cache') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                                            <a href="{{route('clear-cache')}}" class="menu-link">
+                                            <a onclick="routes('{{route('clear-cache')}}');" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
@@ -228,7 +228,7 @@
                                             </a>
                                         </li>
                                         <li class="menu-item {{ request()->is('set-cache') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                                            <a href="{{route('set-cache')}}" class="menu-link">
+                                            <a onclick="routes('{{route('set-cache')}}');" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
@@ -250,7 +250,7 @@
                                     <i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
                                         <li class="menu-item {{ request()->is('refresh-db') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                                            <a href="{{route('refresh-db')}}" class="menu-link">
+                                            <a onclick="routes('{{route('refresh-db')}}');" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
@@ -261,7 +261,7 @@
                                 </div>
                             </li>
                             <li class="menu-item {{ request()->is('refresh-all') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                                <a href="{{route('refresh-all')}}" class="menu-link">
+                                <a onclick="routes('{{route('refresh-all')}}');" class="menu-link">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>

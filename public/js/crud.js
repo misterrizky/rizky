@@ -1,4 +1,21 @@
 let spinner = 'spinner spinner-right spinner-white pr-15';
+function routes(uri)
+{
+    $.ajax({
+        type: "POST",
+        url: uri,
+        data: {
+            _method: 'GET',
+        },
+        success: function (response) {
+            Swal.fire(
+                "Ok!",
+                response.message,
+                "success"
+            );
+        },
+    });
+}
 function handle_open_modal_add(modal){
     $(modal).modal('show');
 }

@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $main_page = request()->segment(1);
+        $secondary_page = request()->segment(2);
         $count_employee = Employee::where('roles','!=','Member')->get()->count();
         $count_member = User::where('roles','=','Member')->get()->count();
         $count_project = Project::all()->count();
@@ -36,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
             'count_project' => $count_project,
             'count_employee' => $count_employee,
             'count_member' => $count_member,
+            'main_page' => $main_page,
+            'secondary_page' => $secondary_page,
         );
         View::share('data', $data);
         

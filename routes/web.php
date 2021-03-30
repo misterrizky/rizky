@@ -7,7 +7,8 @@ Route::group(['domain' => 'rizky-ramadhan.com'], function() {
     Route::get('', 'WebController@main_page_light')->name('home_light');
     Route::get('dark', 'WebController@main_page_dark')->name('home_dark');
 });
-Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
+
+Route::group(['domain' => ''], function() {
     Route::get('auth', 'Auth\OfficeController@index')->name('auth');
     Route::get('auth/reset/{token}', 'Auth\OfficeController@reset');
     Route::post('auth/reset', 'Auth\OfficeController@do_reset')->name('reset_password');
@@ -20,7 +21,7 @@ Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
         Route::get('logout', 'Auth\OfficeController@do_logout')->name('logout');
         Route::get('auth/verify', function () {
             return view('office.auth.verify');
-        })->middleware('auth:employee')->name('verification.notice');
+        })->name('verification.notice');
     });
 
     Route::middleware(['auth:employee','verified'])->group(function () {    
@@ -53,11 +54,18 @@ Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
             Artisan::call('cache:clear');
             Artisan::call('config:clear');
             Artisan::call('view:clear');
-            return redirect()->route('dashboard')->with('Ok', 'All refreshed');
+            return response()->json([
+                'alert' => 'success',
+                'message' => 'Success to refresh App & DB.',
+            ]);
         })->name('refresh-all');
         Route::get('refresh-db', function() {
             Artisan::call('migrate:refresh');
             Artisan::call('db:seed');
+            return response()->json([
+                'alert' => 'success',
+                'message' => 'Success to refresh DB.',
+            ]);
             return redirect()->route('dashboard')->with('Ok', 'DB refreshed');
         })->name('refresh-db');
 
@@ -66,7 +74,10 @@ Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
             Artisan::call('cache:clear');
             Artisan::call('config:clear');
             Artisan::call('view:clear');
-            return redirect()->route('dashboard')->with('Ok', 'Cache Cleared!');
+            return response()->json([
+                'alert' => 'success',
+                'message' => 'Success to clear cache.',
+            ]);
         })->name('clear-cache');
 
         Route::get('set-cache', function() {
@@ -74,29 +85,33 @@ Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
             Artisan::call('cache:cache');
             Artisan::call('config:cache');
             Artisan::call('view:cache');
-            return redirect()->route('dashboard')->with('Ok', 'Cache Set!');
+            return response()->json([
+                'alert' => 'success',
+                'message' => 'Success to set cache.',
+            ]);
         })->name('set-cache');
     });
 });
+
 Route::group(['domain' => 'shop.rizky-ramadhan.com'], function() {
-    Route::get('auth', 'Auth\OfficeController@index')->name('auth');
-    Route::get('auth/google', 'Auth\OfficeController@redirectToGoogle')->name('auth_google');
-    Route::get('auth/google/callback', 'Auth\OfficeController@handleGoogleCallback');
-    Route::get('auth/verify/{token}', 'Auth\OfficeController@verify');
-    Route::get('auth/reset/{token}', 'Auth\OfficeController@reset');
-    Route::post('auth/reset', 'Auth\OfficeController@do_reset')->name('reset_password');
+    Route::get('auth', 'Auth\ShopController@index')->name('authentication');
+    Route::get('auth/google', 'Auth\ShopController@redirectToGoogle')->name('auth_google');
+    Route::get('auth/google/callback', 'Auth\ShopController@handleGoogleCallback');
+    Route::get('auth/verify/{token}', 'Auth\ShopController@verify');
+    Route::get('auth/reset/{token}', 'Auth\ShopController@reset');
+    Route::post('auth/reset', 'Auth\ShopController@do_reset')->name('reset_password');
 
-    Route::post('login', 'Auth\OfficeController@do_login');
-    Route::post('register', 'Auth\OfficeController@do_register')->name('register');
-    Route::post('forgot', 'Auth\OfficeController@do_forgot');
+    Route::post('login', 'Auth\ShopController@do_login');
+    Route::post('register', 'Auth\ShopController@do_register')->name('register');
+    Route::post('forgot', 'Auth\ShopController@do_forgot');
 
-    Route::middleware(['auth:employee'])->group(function () {
-        Route::get('logout', 'Auth\OfficeController@do_logout')->name('logout');
+    Route::middleware(['auth:member'])->group(function () {
+        Route::get('signout', 'Auth\ShopController@do_logout')->name('signout');
         Route::get('auth/verify', function () {
             return view('office.auth.verify');
-        })->middleware('auth:employee')->name('verification.notice');
+        })->name('verification.notice');
         Route::get('email/resend', function () {
             return view('office.auth.verify');
-        })->middleware('auth:employee')->name('verification.resend');    
+        })->name('verification.resend');    
     });
 });
