@@ -95,23 +95,23 @@ Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
 
 Route::group(['domain' => 'shop.rizky-ramadhan.com'], function() {
     Route::get('auth', 'Auth\ShopController@index')->name('authentication');
-    Route::get('auth/google', 'Auth\ShopController@redirectToGoogle')->name('auth_google');
-    Route::get('auth/google/callback', 'Auth\ShopController@handleGoogleCallback');
-    Route::get('auth/verify/{token}', 'Auth\ShopController@verify');
-    Route::get('auth/reset/{token}', 'Auth\ShopController@reset');
-    Route::post('auth/reset', 'Auth\ShopController@do_reset')->name('reset_password');
+    // Route::get('auth/google', 'Auth\ShopController@redirectToGoogle')->name('auth_google');
+    // Route::get('auth/google/callback', 'Auth\ShopController@handleGoogleCallback');
+    // Route::get('auth/verify/{token}', 'Auth\ShopController@verify');
+    // Route::get('auth/reset/{token}', 'Auth\ShopController@reset');
+    // Route::post('auth/reset', 'Auth\ShopController@do_reset')->name('reset_password');
 
-    Route::post('login', 'Auth\ShopController@do_login');
-    Route::post('register', 'Auth\ShopController@do_register')->name('register');
-    Route::post('forgot', 'Auth\ShopController@do_forgot');
+    // Route::post('login', 'Auth\ShopController@do_login');
+    // Route::post('register', 'Auth\ShopController@do_register')->name('register');
+    // Route::post('forgot', 'Auth\ShopController@do_forgot');
 
-    Route::middleware(['auth:member'])->group(function () {
-        Route::get('signout', 'Auth\ShopController@do_logout')->name('signout');
-        Route::get('auth/verify', function () {
-            return view('office.auth.verify');
-        })->name('shop.verification.notice');
-        Route::get('email/resend', function () {
-            return view('office.auth.verify');
-        })->name('shop.verification.resend');    
-    });
+    // Route::middleware(['auth:member'])->group(function () {
+    //     Route::get('signout', 'Auth\ShopController@do_logout')->name('signout');
+    //     Route::get('auth/verify', function () {
+    //         return view('office.auth.verify');
+    //     })->name('shop.verification.notice');
+    //     Route::get('email/resend', function () {
+    //         return view('office.auth.verify');
+    //     })->name('shop.verification.resend');    
+    // });
 });
