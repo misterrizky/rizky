@@ -109,9 +109,9 @@ Route::group(['domain' => 'shop.rizky-ramadhan.com'], function() {
         Route::get('signout', 'Auth\ShopController@do_logout')->name('signout');
         Route::get('auth/verify', function () {
             return view('office.auth.verify');
-        })->name('verification.notice');
+        })->name('shop.verification.notice');
         Route::get('email/resend', function () {
             return view('office.auth.verify');
-        })->name('verification.resend');    
+        })->name('shop.verification.resend');    
     });
 });
