@@ -8,7 +8,7 @@ Route::group(['domain' => 'rizky-ramadhan.com'], function() {
     Route::get('dark', 'WebController@main_page_dark')->name('home_dark');
 });
 
-Route::group(['domain' => ''], function() {
+Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
     Route::get('auth', 'Auth\OfficeController@index')->name('auth');
     Route::get('auth/reset/{token}', 'Auth\OfficeController@reset');
     Route::post('auth/reset', 'Auth\OfficeController@do_reset')->name('reset_password');
