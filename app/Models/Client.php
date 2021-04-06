@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
+    protected $guard = 'employee';
     protected $table = 'clients';
     protected $primaryKey = 'id_client';
 
     protected $fillable = [
-        'name', 'photo', 'is_active'
+        'name','slug', 'photo', 'is_active'
     ];
     public function getTakeImageAttribute()
     {

@@ -45,6 +45,6 @@ class AppServiceProvider extends ServiceProvider
         
         // Paginator::useTailwind();
         
-        Paginator::defaultView('office_layouts.pagination');
+        Paginator::defaultView('office.layouts.pagination');
     }
 }

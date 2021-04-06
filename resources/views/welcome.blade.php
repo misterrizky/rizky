@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+            Echo.channel('events')
+                .listen('RealTimeMessage', (e) => console.log('RealTimeMessage: ' + e.message));
+        </script>
 
         <title>Laravel</title>
 

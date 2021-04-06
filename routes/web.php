@@ -7,39 +7,59 @@ Route::group(['domain' => 'rizky-ramadhan.com'], function() {
     Route::get('', 'WebController@main_page_light')->name('home_light');
     Route::get('dark', 'WebController@main_page_dark')->name('home_dark');
 });
+Route::group(['domain' => 'anniversary.rizky-ramadhan.com'], function() {
+    Route::get('', 'WebController@anniversary')->name('anniversary_page');
+});
 
-Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
+Route::group(['domain' => 'sd'], function() {
+
     Route::get('auth', 'Auth\OfficeController@index')->name('auth');
     Route::get('auth/reset/{token}', 'Auth\OfficeController@reset');
     Route::post('auth/reset', 'Auth\OfficeController@do_reset')->name('reset_password');
 
     Route::post('login', 'Auth\OfficeController@do_login');
-    Route::post('register', 'Auth\OfficeController@do_register')->name('register');
+    Route::post('register', 'Auth\OfficeController@do_register');
     Route::post('forgot', 'Auth\OfficeController@do_forgot');
 
-    Route::middleware(['auth:employee'])->group(function () {
+    Route::group(['middleware' => 'auth:employee'], function () {
         Route::get('logout', 'Auth\OfficeController@do_logout')->name('logout');
         Route::get('auth/verify', function () {
             return view('office.auth.verify');
-        })->name('verification.notice');
+        })->name('office.verification.notice');
     });
 
-    Route::middleware(['auth:employee','verified'])->group(function () {    
+    Route::group(['middleware' => 'auth:employee','verified'], function () {
+
         Route::get('/', function(){
             return redirect()->route('dashboard');
         });
+        Route::get('dashboard', 'OfficeController@index')->name('dashboard');
 
-        Route::get('/notifications', 'aster\EmployeeController@notifications');
+        // CLIENT
+        Route::get('client', 'Master\ClientController@index')->name('client');
+        Route::get('client/create', 'Master\ClientController@create')->name('client_input');
+        Route::post('client/store', 'Master\ClientController@store')->name('client_store');
+        Route::get('client/{client:slug}/edit', 'Master\ClientController@edit');
+        Route::post('client/{client:slug}/update', 'Master\ClientController@update');
+        Route::post('client/{client:slug}/delete', 'Master\ClientController@destroy');
+        Route::post('client/{client:slug}/active', 'Master\ClientController@active');
+        Route::post('client/{client:slug}/non-active', 'Master\ClientController@non_active');
+
+        // PORTFOLIO
+        Route::get('portfolio', 'Master\ProjectController@index')->name('portfolio');
+        Route::get('portfolio/create', 'Master\ProjectController@create')->name('portfolio_input');
+        Route::post('portfolio/store', 'Master\ProjectController@store')->name('portfolio_store');
+        Route::get('portfolio/{portfolio}/edit', 'Master\ProjectController@edit');
+        Route::post('portfolio/{portfolio}/edit', 'Master\ProjectController@update');
+        Route::post('portfolio/{portfolio}/delete', 'Master\ProjectController@destroy');
+        Route::post('portfolio/{portfolio}/active', 'Master\ProjectController@active');
+        Route::post('portfolio/{portfolio}/non-active', 'Master\ProjectController@non_active');
+
+        Route::get('notifications', 'Master\EmployeeController@notifications');
 
         Route::get('employee', 'Master\EmployeeController@index')->name('employee');
         Route::post('employee/{id_user}/follow', 'Master\EmployeeController@follow')->name('follow');
         Route::delete('employee/{id_user}/unfollow', 'Master\EmployeeController@unfollow')->name('unfollow');
-
-        Route::get('dashboard', 'OfficeController@index')->name('dashboard');
-
-        Route::get('client', 'OfficeController@index')->name('client');
-
-        Route::get('portfolio', 'OfficeController@index')->name('portfolio');
 
         Route::get('product', 'OfficeController@index')->name('product');
 
@@ -93,8 +113,8 @@ Route::group(['domain' => 'office.rizky-ramadhan.com'], function() {
     });
 });
 
-Route::group(['domain' => 'shop.rizky-ramadhan.com'], function() {
-    Route::get('auth', 'Auth\ShopController@index')->name('authentication');
+// Route::group(['domain' => 'shop.rizky-ramadhan.com'], function() {
+//     Route::get('auth', 'Auth\ShopController@index')->name('authentication');
     // Route::get('auth/google', 'Auth\ShopController@redirectToGoogle')->name('auth_google');
     // Route::get('auth/google/callback', 'Auth\ShopController@handleGoogleCallback');
     // Route::get('auth/verify/{token}', 'Auth\ShopController@verify');
@@ -114,4 +134,4 @@ Route::group(['domain' => 'shop.rizky-ramadhan.com'], function() {
     //         return view('office.auth.verify');
     //     })->name('shop.verification.resend');    
     // });
-});
+// });

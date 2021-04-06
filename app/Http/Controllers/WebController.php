@@ -40,4 +40,8 @@ class WebController extends Controller
         $persentase = ($total_sudah / $total_project ) * 100;
         return view('web.page.main',compact('clients','projects','total_project','persentase','total_client'));
     }
+    public function anniversary()
+    {
+        return view('web.page.anniversary');
+    }
 }

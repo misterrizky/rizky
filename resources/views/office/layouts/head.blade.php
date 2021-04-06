@@ -31,29 +31,4 @@
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" />
     <!-- Scripts -->
-    <script>
-        window.Laravel = "{{ json_encode(['csrfToken' => csrf_token()]) }}";
-    </script>
-
-    <!-- This makes the current user's id available in javascript -->
-    @if(!auth()->guest())
-        <script>
-            window.Laravel.userId = "{{auth()->user()->id}}";
-        </script>
-    @endif
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script>
-
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('98455b15a02389283a11', {
-            cluster: 'ap1'
-        });
-
-        var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
-        });
-    </script>
 </head>

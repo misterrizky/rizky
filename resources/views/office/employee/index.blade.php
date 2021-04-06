@@ -19,6 +19,11 @@
                         @foreach ($employees as $user)
                             <tr>
                                 <td clphpass="table-text"><div>{{ $user->name }}</div></td>
+                                @if($user->isBanned())
+                                <a href="{{ route('users.revokeuser',$user->id) }}" class="btn btn-success btn-sm"> Revoke</a>
+                                @else
+                                <a class="btn btn-success ban btn-sm" data-id="{{ $user->id }}" data-action="{{ URL::route('users.ban') }}"> Ban</a>
+                                @endif
                                 @if (auth()->user()->isFollowing($user->id_user))
                                     <td>
                                         <form action="{{route('unfollow', ['id_user' => $user->id_user])}}" method="POST">

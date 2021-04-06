@@ -1,9 +1,51 @@
 $(document).ready(function() {
-
 });
+function show_progress(type)
+{
+    if(type == "content"){
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'danger',
+            message: 'Please wait...'
+        });
+    }else{
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'primary',
+            message: 'Processing...'
+        });
+    }
+}
+function hide_progress()
+{
+    KTApp.unblockPage();
+}
+function show_content(obj)
+{
+    $(obj).show();
+}
+function hide_content(obj)
+{
+    $(obj).hide();
+}
+function obj_onfocus(obj)
+{
+    let len = obj.value.length;
+    if (obj.setSelectionRange) {
+        obj.focus();
+        obj.setSelectionRange(len, len);
+    } else if (obj.createTextRange) {
+        let t = obj.createTextRange();
+        t.collapse(true);
+        t.moveEnd('character', len);
+        t.moveStart('character', len);
+        t.select();
+    }
+}
 function obj_image(obj)
 {
-    new KTImageInput(obj);
+    alert(obj);
+    let image = new KTImageInput(obj);
 }
 function obj_select2(obj)
 {

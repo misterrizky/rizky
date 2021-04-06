@@ -15,7 +15,9 @@
             KTUtil.animateClass(KTUtil.getById(form), 'animate__animated animate__backInUp');
         }
         var _handleSignInForm = function() {
+            $('#username_login').focus();
             var validation;
+
             // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
             validation = FormValidation.formValidation(
                 KTUtil.getById('kt_login_signin_form'),
@@ -128,6 +130,7 @@
         }
 
         var _handleSignUpForm = function(e) {
+            $('#fullname_register').focus();
             var validation;
             var form = KTUtil.getById('kt_login_signup_form');
 
@@ -276,6 +279,7 @@
         }
 
         var _handleForgotForm = function(e) {
+            $('#email_forgot').focus();
             var validation;
 
             // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
@@ -353,6 +357,7 @@
                             }
                         });
                     } else {
+                        $('#email_forgot').focus();
                         swal.fire({
                             text: "Sorry, looks like there are some errors detected, please try again.",
                             icon: "error",

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,6 +12,7 @@ use App\Notifications\PasswordReset;
 class Employee extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    use Bannable;
 
     protected $guard = 'employee';
 

@@ -9,6 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "asvae/laravel-api-tester": "^2.0",
+        "beyondcode/laravel-websockets": "^1.9",
+        "cybercog/laravel-ban": "^4.6",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.3",
@@ -16,7 +19,7 @@
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",
-        "pusher/pusher-php-server": "^6.1"
+        "pusher/pusher-php-server": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

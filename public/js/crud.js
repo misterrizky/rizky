@@ -109,7 +109,9 @@ function handle_upload(param,form,uri,redirect)
 {
     $(document).one('submit', form, function (e) {
         let data = new FormData(this);
+        show_progress('input');
         data.append(param, "");
+        data.append('_method', 'POST');
         $('#' + param).addClass(spinner);
         $('#' + param).prop("disabled", true);
         $('#' + param).html("Please wait");
@@ -127,20 +129,19 @@ function handle_upload(param,form,uri,redirect)
                 if (response.alert=="success") {
                     success_message(response.message);
                     $(form)[0].reset();
+                    load_list(1);
                     setTimeout(function () {
-                        $('#' + param).removeClass("spinner spinner-right spinner-white pr-15");
-                        $('#' + param).prop("disabled", false);
-                        $('#' + param).html("Save");
-                        location.href=redirect;
+                        main_content('content_list');
                     }, 2000);
                 } else {
                     success_message(response.message);
-                    setTimeout(function () {
-                        $('#' + param).removeClass("spinner spinner-right spinner-white pr-15");
-                        $('#' + param).prop("disabled", false);
-                        $('#' + param).html("Save");
-                    }, 2000);
                 }
+                setTimeout(function () {
+                    $('#' + param).removeClass("spinner spinner-right spinner-white pr-15");
+                    $('#' + param).prop("disabled", false);
+                    $('#' + param).html("Save");
+                    hide_progress();
+                }, 2000);
             },
         });
         return false;
@@ -214,7 +215,8 @@ function handle_delete(id,uri,redirect)
                             "You have deleted this data!.",
                             "success"
                         );
-                        location.href = redirect;
+                        load_list(1);
+                        // location.href = redirect;
                     } else {
                         Swal.fire(
                             "You can't delete this data!",
@@ -259,7 +261,10 @@ function handle_confirm(id,uri)
                             "You have confirmed this data!",
                             "success"
                         );
-                        location.reload();
+                        // show_content(show);
+                        // hide_content(hide);
+                        // location.reload();
+                        load_list(1);
                     } else {
                         Swal.fire(
                             "Confirm fail!",

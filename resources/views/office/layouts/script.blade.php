@@ -29,9 +29,26 @@
     });
     </script>
 <script src="{{ asset('js/alert.js') }}"></script>
-@auth
 <script src="{{ asset('js/crud.js') }}"></script>
+@auth
+<script src="{{ asset('js/plugins.js') }}"></script>
 @endauth
 @guest
 <script src="{{ asset('js/auth.js') }}"></script>
 @endguest
+<script>
+    function main_content(cont) {
+		$('#content_list').hide();
+		$('#content_input').hide();
+		//
+		$('#' + cont).show();
+	}
+    function load_content_input(url) {
+        show_progress('input');
+        $.get(url, {}, function(result) {
+            $('#content_input').html(result);
+            main_content('content_input');
+            hide_progress();
+        }, "html");
+    }
+</script>

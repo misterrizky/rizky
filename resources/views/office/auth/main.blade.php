@@ -54,7 +54,7 @@
                             <label for="username_login" class="font-size-h6 font-weight-bolder text-dark">
                                 Username
                             </label>
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text" id="username_login" name="username_login" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text" id="username_login" name="username_login" autocomplete="off" data-index="1" />
                         </div>
                         <!--end::Form group-->
                         <!--begin::Form group-->
@@ -65,12 +65,12 @@
                                 </label>
                                 <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a>
                             </div>
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" id="password_login" name="password_login" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" id="password_login" name="password_login" autocomplete="off" data-index="2" />
                         </div>
                         <!--end::Form group-->
                         <!--begin::Action-->
                         <div class="pb-lg-0 pb-5">
-                            <button type="button" id="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+                            <button type="button" id="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" data-index="3">Sign In</button>
                             {{-- <a href="{{route('auth_google')}}" class="btn btn-light-primary font-weight-bolder px-8 py-4 my-3 font-size-lg">
                             <span class="svg-icon svg-icon-md">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -98,25 +98,25 @@
                         <!--end::Title-->
                         <!--begin::Form group-->
                         <div class="form-group">
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="text" placeholder="Fullname" id="fullname_register" name="fullname_register" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="text" placeholder="Fullname" id="fullname_register" name="fullname_register" autocomplete="off" data-index="1" />
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="text" placeholder="Username" id="username_register" name="username_register" autocomplete="off" />
-                        </div>
-                        <!--end::Form group-->
-                        <!--begin::Form group-->
-                        <div class="form-group">
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="email" placeholder="Email" id="email_register" name="email_register" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="text" placeholder="Username" id="username_register" name="username_register" autocomplete="off" data-index="2" />
                         </div>
                         <!--end::Form group-->
                         <!--begin::Form group-->
                         <div class="form-group">
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="password" placeholder="Password" id="password_register" name="password_register" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="email" placeholder="Email" id="email_register" name="email_register" autocomplete="off" data-index="3" />
                         </div>
                         <!--end::Form group-->
                         <!--begin::Form group-->
                         <div class="form-group">
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="password" placeholder="Confirm password" id="password_confirmation" name="password_confirmation" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="password" placeholder="Password" id="password_register" name="password_register" autocomplete="off" data-index="4" />
+                        </div>
+                        <!--end::Form group-->
+                        <!--begin::Form group-->
+                        <div class="form-group">
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="password" placeholder="Confirm password" id="password_confirmation" name="password_confirmation" autocomplete="off" data-index="5" />
                         </div>
                         <!--end::Form group-->
                         <!--begin::Form group-->
@@ -125,13 +125,13 @@
                                 <input type="checkbox" name="agree" />
                                 <span></span>
                                 <div class="ml-2">I Agree the
-                                <a href="#">terms and conditions</a>.</div>
+                                <a href="javascript:void(0);" onclick="handle_open_modal_add('#TermsModal');">terms and conditions</a>.</div>
                             </label>
                         </div>
                         <!--end::Form group-->
                         <!--begin::Form group-->
                         <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
-                            <button type="button" id="kt_login_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit</button>
+                            <button type="button" id="kt_login_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4" data-index="6">Submit</button>
                             <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</button>
                         </div>
                         <!--end::Form group-->
@@ -155,12 +155,12 @@
                         <!--end::Title-->
                         <!--begin::Form group-->
                         <div class="form-group">
-                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="email" placeholder="Email" id="email_forgot" name="email_forgot" autocomplete="off" />
+                            <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" type="email" placeholder="Email" id="email_forgot" name="email_forgot" autocomplete="off" data-index="1" />
                         </div>
                         <!--end::Form group-->
                         <!--begin::Form group-->
                         <div class="form-group d-flex flex-wrap pb-lg-0">
-                            <button type="button" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit</button>
+                            <button type="button" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4" data-index="2">Submit</button>
                             <button type="button" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</button>
                         </div>
                         <!--end::Form group-->
@@ -176,9 +176,9 @@
                     <span class="mr-1">2021©</span>
                     <a href="https://rizky-ramadhan.com/" target="_blank" class="text-dark-75 text-hover-primary">Rizky Ramadhan</a>
                 </div>
-                <a href="#" class="text-primary font-weight-bolder font-size-lg">Terms</a>
-                <a href="#" class="text-primary ml-5 font-weight-bolder font-size-lg">Plans</a>
-                <a href="#" class="text-primary ml-5 font-weight-bolder font-size-lg">Contact Us</a>
+                <a href="javascript:void(0);" onclick="handle_open_modal_add('#TermsModal');" class="text-primary font-weight-bolder font-size-lg">Terms</a>
+                <a href="javascript:void(0);" onclick="handle_open_modal_add('#PlansModal');" class="text-primary ml-5 font-weight-bolder font-size-lg">Plans</a>
+                <a href="mailto:ask@rizky-ramadhan.com" class="text-primary ml-5 font-weight-bolder font-size-lg">Contact Us</a>
             </div>
             <!--end::Content footer-->
         </div>
@@ -186,4 +186,32 @@
     </div>
     <!--end::Login-->
 </div>
+@endsection
+@section('custom_js')
+    <script>
+        $('#kt_login_signin_form').on('keydown', 'input', function (event) {
+			if (event.which == 13) {
+				event.preventDefault();
+				var $this = $(event.target);
+				var index = parseFloat($this.attr('data-index'));
+				$('[data-index="' + (index + 1).toString() + '"]').focus();
+			}
+		});
+        $('#kt_login_signup_form').on('keydown', 'input', function (event) {
+			if (event.which == 13) {
+				event.preventDefault();
+				var $this = $(event.target);
+				var index = parseFloat($this.attr('data-index'));
+				$('[data-index="' + (index + 1).toString() + '"]').focus();
+			}
+		});
+        $('#kt_login_forgot_form').on('keydown', 'input', function (event) {
+			if (event.which == 13) {
+				event.preventDefault();
+				var $this = $(event.target);
+				var index = parseFloat($this.attr('data-index'));
+				$('[data-index="' + (index + 1).toString() + '"]').focus();
+			}
+		});
+    </script>
 @endsection

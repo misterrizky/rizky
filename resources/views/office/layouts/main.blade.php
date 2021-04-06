@@ -65,6 +65,7 @@
 	@endguest
 		@include('office.layouts.script')
 		@yield('custom_js')
+		@include('office.layouts.modal')
 	</body>
 	<!--end::Body-->
 </html>
